@@ -1,0 +1,9 @@
+/config
+/node_modules
+/public
+/scripts
+/src/registerServiceWorker.js
+next.config.js
+postcss.config.js
+*.d.ts
+**/*.stories.tsx
