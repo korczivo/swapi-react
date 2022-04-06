@@ -24,6 +24,9 @@ yarn start
 
 Now project is running here: http://localhost:3000/
 
+## Deploy
+
+<a link="https://swapi-react.pages.dev/" target="_blank"> Demo here </a>
 
 ## Rules
 
