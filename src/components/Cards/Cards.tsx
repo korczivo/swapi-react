@@ -1,9 +1,11 @@
 import React from 'react';
 
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 import { Person } from '../Person';
 import { People } from '../../types';
+import { getRandomInt } from '../../helpers/numbers';
+import { CARD_COLORS } from '../../helpers/constants';
 
 export interface CardsProps {
   people?: Array<People>;
@@ -14,22 +16,25 @@ export const Cards = ({
   people = [],
   winner,
 }: CardsProps) => (
-  <Box
-    sx={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: 600,
-    }}
-    data-testid="cards-row"
-  >
+  <>
     {
-      people.map(person => (
-        <Person
-          key={person.name}
-          isWinner={winner?.name === person.name}
-          {...person}
-        />
-      ))
+      people.map(person => {
+        const getCardColor: string = CARD_COLORS[getRandomInt(1, CARD_COLORS.length)];
+
+        return (
+          <Grid
+            item
+            xs={4}
+            key={person.name}
+          >
+            <Person
+              color={getCardColor}
+              isWinner={winner?.name === person.name}
+              {...person}
+            />
+          </Grid>
+        );
+      })
     }
-  </Box>
+  </>
 );

@@ -2,9 +2,8 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import { Search } from '../../components/Search';
 import { useLoadingStatus } from '../../contexts/FetchStatus';
 import { useGameManagement } from '../../contexts/GameContext/hook';
 
@@ -15,20 +14,18 @@ export const GameManagement = () => {
     handleClearPlayers,
     handleClearGame,
     people,
+    winner,
   } = useGameManagement();
 
   return (
     (
       <>
-        <Search />
-        <Grid container>
-          <Box sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            pb: 5,
-            pt: 5,
-          }}
-          >
+        <Grid
+          container
+          justifyContent="center"
+          spacing={3}
+        >
+          <Grid item>
             <Button
               onClick={handleRoll}
               disabled={isLoading}
@@ -36,17 +33,21 @@ export const GameManagement = () => {
             >
               Roll players
             </Button>
-            {
+          </Grid>
+          {
               !!people.length && (
-                <Button
-                  onClick={handleClearPlayers}
-                  disabled={isLoading}
-                  variant="contained"
-                >
-                  Clear players
-                </Button>
+                <Grid item>
+                  <Button
+                    onClick={handleClearPlayers}
+                    disabled={isLoading}
+                    variant="contained"
+                  >
+                    Clear players
+                  </Button>
+                </Grid>
               )
             }
+          <Grid item>
             <Button
               onClick={handleClearGame}
               disabled={isLoading}
@@ -54,7 +55,33 @@ export const GameManagement = () => {
             >
               New game
             </Button>
-          </Box>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          justifyContent="center"
+          textAlign="center"
+          mt={2}
+        >
+          {
+            winner && (
+              <Grid
+                item
+                xs={4}
+              >
+                {
+                  !winner?.name && (
+                    <Typography
+                      variant="h5"
+                      fontWeight="bolder"
+                    >
+                      Game draw.
+                    </Typography>
+                  )
+                }
+              </Grid>
+            )
+          }
         </Grid>
       </>
     )

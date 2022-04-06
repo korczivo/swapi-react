@@ -2,15 +2,15 @@ import React, {
   useEffect,
 } from 'react';
 
-import {
-  Container,
-} from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { Container } from '@mui/material';
 
 import { GameCards } from './containers/GameCards';
 import { GameManagement } from './containers/GameManagement';
 import { useGameManagement } from './contexts/GameContext/hook';
 import { GameInfo } from './containers/GameInfo';
+import { Search } from './components/Search';
 
 const App = () => {
   const {
@@ -20,19 +20,25 @@ const App = () => {
   useEffect(() => () => handleClearGame(), []);
 
   return (
-    <Container>
-      <Typography
-        variant="h2"
-        align="center"
-        style={{ margin: 20 }}
-      >
-        Star Wars Game
-      </Typography>
+    <>
+      <Box p={2}>
+        <Typography
+          variant="h5"
+          fontWeight="bolder"
+        >
+          Star Wars Game
+        </Typography>
+      </Box>
 
-      <GameManagement />
-      <GameInfo />
-      <GameCards />
-    </Container>
+      <main>
+        <Container maxWidth="md">
+          <Search />
+          <GameInfo />
+          <GameCards />
+          <GameManagement />
+        </Container>
+      </main>
+    </>
   );
 };
 
