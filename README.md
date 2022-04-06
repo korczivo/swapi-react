@@ -34,4 +34,3 @@ Now project is running here: http://localhost:3000/
 2. Player with bigger mass wins
 3. To select winner you need two players
 4. If you are using search bar you can't add two the same person
-5. 
