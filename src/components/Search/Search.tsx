@@ -13,7 +13,6 @@ import {
 import Button from '@mui/material/Button';
 import { useDebouncedCallback } from 'use-debounce';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 
 import {
   People,
@@ -66,7 +65,12 @@ export const Search = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid
+        container
+        justifyContent="center"
+        mb={2}
+        alignItems="center"
+      >
         <Grid item>
           <Autocomplete
             sx={{ width: 300 }}
@@ -84,6 +88,7 @@ export const Search = () => {
                   onChange={debouncedChange}
                   label="Search player"
                   placeholder="Type player name"
+                  variant="outlined"
                   InputProps={{
                     ...params.InputProps,
                     endAdornment: (
@@ -101,23 +106,28 @@ export const Search = () => {
                         }
                       </>
                     ),
+                    style: {
+                      color: '#fff',
+                    },
                   }}
                 />
               </>
             )}
           />
         </Grid>
-        <Grid item>
-          <Box sx={{ pl: 2 }}>
-            <Button
-              variant="contained"
-              onClick={handleAddPlayer}
-              disabled={isButtonDisabled}
-              type="button"
-            >
-              Add
-            </Button>
-          </Box>
+        <Grid
+          item
+          pl={2}
+        >
+          <Button
+            variant="contained"
+            onClick={handleAddPlayer}
+            disabled={isButtonDisabled}
+            type="button"
+            color="secondary"
+          >
+            Add
+          </Button>
         </Grid>
       </Grid>
     </>

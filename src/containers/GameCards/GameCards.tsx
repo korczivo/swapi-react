@@ -2,10 +2,12 @@ import React from 'react';
 
 import { CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import { Cards } from '../../components/Cards';
 import { useLoadingStatus } from '../../contexts/FetchStatus';
 import { useGameManagement } from '../../contexts/GameContext/hook';
+import { CardsWrapper } from './GameCards.styles';
 
 export const GameCards = () => {
   const {
@@ -17,11 +19,26 @@ export const GameCards = () => {
     winner,
   } = useGameManagement();
 
+  const isInfoText = !people?.length && !isLoading;
+
   return (
-    <Grid
+    <CardsWrapper
+      alignItems="center"
       container
-      mt={5}
+      justifyContent="center"
+      spacing={2}
     >
+      {
+        isInfoText && (
+          <Grid>
+            <Typography
+              variant="h3"
+            >
+              No players yet.
+            </Typography>
+          </Grid>
+        )
+      }
       {
         isLoading && <CircularProgress />
       }
@@ -33,6 +50,6 @@ export const GameCards = () => {
           />
         )
       }
-    </Grid>
+    </CardsWrapper>
   );
 };

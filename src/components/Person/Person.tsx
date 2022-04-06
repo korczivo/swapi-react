@@ -1,58 +1,56 @@
 import React from 'react';
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/system';
+import Box from '@mui/material/Box';
 
 import { People } from '../../types';
 
 interface PersonProps extends People {
   isWinner: boolean;
+  color: string;
 }
 
 export const Person = ({
   name,
   mass,
-  gender,
-  height,
-  birth_year,
   isWinner,
-}: PersonProps) => (
-  <Card
-    sx={{ minWidth: 275 }}
-    style={{ background: isWinner ? '#38c038' : '#fff' }}
-  >
-    <CardContent>
+  color,
+}: PersonProps) => {
+  const isWinnerText = isWinner && 'Win!';
+
+  const PersonBox = styled(Box)({
+    alignItems: 'center',
+    backgroundColor: color,
+    borderRadius: 5,
+    display: 'flex',
+    flexDirection: 'column',
+    height: 300,
+    justifyContent: 'center',
+    padding: 25,
+    textAlign: 'center',
+  });
+
+  return (
+    <PersonBox>
       <Typography
-        color="text.secondary"
-        gutterBottom
-      >
-        {gender}
-      </Typography>
-      <Typography
-        variant="h5"
+        variant="h4"
         component="div"
+        color="secondary.contrastText"
       >
         {name}
       </Typography>
       <Typography
-        sx={{ mb: 1.5 }}
         color="text.secondary"
       >
         {`Mass: ${mass}`}
       </Typography>
       <Typography
-        sx={{ mb: 1.5 }}
         color="text.secondary"
+        variant="h6"
       >
-        {`Height: ${height}`}
+        { isWinnerText }
       </Typography>
-      <Typography
-        sx={{ mb: 1.5 }}
-        color="text.secondary"
-      >
-        {`Birth year: ${birth_year}`}
-      </Typography>
-    </CardContent>
-  </Card>
-);
+    </PersonBox>
+  );
+};
