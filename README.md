@@ -28,6 +28,12 @@ Now project is running here: http://localhost:3000/
 
 <a href="https://swapi-react.pages.dev/" target="_blank"> Demo here </a>
 
+## How game works?
+
+1. Roll players - starst a game and play again
+2. Clear players - remove players, not clears score table
+3. New game - clears whole game
+
 ## Rules
 
 1. Unknown mass equal to 0
