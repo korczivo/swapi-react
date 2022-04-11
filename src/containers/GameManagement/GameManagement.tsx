@@ -35,7 +35,8 @@ export const GameManagement = () => {
             </Button>
           </Grid>
           {
-              !!people.length && (
+            !!people.length && (
+              <>
                 <Grid item>
                   <Button
                     onClick={handleClearPlayers}
@@ -45,17 +46,18 @@ export const GameManagement = () => {
                     Clear players
                   </Button>
                 </Grid>
-              )
-            }
-          <Grid item>
-            <Button
-              onClick={handleClearGame}
-              disabled={isLoading}
-              variant="contained"
-            >
-              New game
-            </Button>
-          </Grid>
+                <Grid item>
+                  <Button
+                    onClick={handleClearGame}
+                    disabled={isLoading}
+                    variant="contained"
+                  >
+                    New game
+                  </Button>
+                </Grid>
+              </>
+            )
+          }
         </Grid>
         <Grid
           container
