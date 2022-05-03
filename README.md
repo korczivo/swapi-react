@@ -22,6 +22,11 @@ Start project
 yarn start
 ```
 
+Run tests
+```
+yarn test
+```
+
 Now project is running here: http://localhost:3000/
 
 ## Deploy
